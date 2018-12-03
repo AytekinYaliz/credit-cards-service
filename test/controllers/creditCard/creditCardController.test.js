@@ -21,5 +21,14 @@ describe('CreditCard Controller', () => {
             expect(typeof res.body.data).toBe('object');
             done();
          });
-   })
+   });
+
+   it('should return 400 w/ empty name for of POST /api/creditCards', (done) => {
+      supertest(server)
+         .post('/api/creditCards')
+         .end((err, res) => {
+            expect(res.status).toBe(HttpStatus.BadRequest);
+            done();
+         });
+   });
 })
