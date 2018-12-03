@@ -17,6 +17,8 @@ describe('CreditCard Controller', () => {
             expect(res.status).toBe(HttpStatus.OK);
             expect(res.body.data).not.toBeNull();
             expect(res.body.data).not.toBeUndefined();
+            expect(Array.isArray(res.body.data)).toBe(true);
+            expect(typeof res.body.data).toBe('object');
             done();
          });
    })
