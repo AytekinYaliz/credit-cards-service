@@ -119,5 +119,17 @@ describe('CreditCard Controller', () => {
                done();
             });
       });
+
+      it('should return validation errors for PUT /api/creditCards/:name/', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
+            .send(mockCreditCard.creditCardWithInvalidAmount)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.BadRequest);
+               expect(res.body.data[0].msg).toBe('Invalid amount!');
+
+               done();
+            });
+      });
    });
 })
