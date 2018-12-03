@@ -89,4 +89,17 @@ describe('CreditCard Controller', () => {
             done();
          });
    });
+
+   it('should return array of 1 Credit Cards for GET /api/creditCards', (done) => {
+      supertest(server)
+         .get('/api/creditCards')
+         .end((err, res) => {
+            expect(res.status).toBe(StatusCodes.OK);
+            expect(res.body.data).not.toBeNull();
+            expect(res.body.data).not.toBeUndefined();
+            expect(Array.isArray(res.body.data)).toBe(true);
+            expect(res.body.data.length).toBe(1);
+            done();
+         });
+   });
 })
