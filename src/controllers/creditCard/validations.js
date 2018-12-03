@@ -2,13 +2,6 @@
 const { isValidCardNumber } = require("../../libs/utilities");
 
 const validations = {
-   id: {
-      in: ["query"],
-      custom: {
-         options: (id, { req }) => isValidObjectId(req.params.id),
-         errorMessage: "Wrong format!"
-      }
-   },
    name: {
       // in: ['body'],
       isLength: {

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1543872800828" clover="3.2.0">
+  <project timestamp="1543872800828" name="All files">
+    <metrics statements="93" coveredstatements="79" conditionals="14" coveredconditionals="9" methods="15" coveredmethods="14" elements="122" coveredelements="102" complexity="0" loc="93" ncloc="93" packages="8" files="13" classes="13">
+      <package name="src">
+        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="router.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/router.js">
+          <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+        </file>
+        <file name="server.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/server.js">
+          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.config">
+        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <file name="index.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/config/index.js">
+          <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="4" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.controllers.creditCard">
+        <metrics statements="24" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+        <file name="creditCardController.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/controllers/creditCard/creditCardController.js">
+          <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+        </file>
+        <file name="routes.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/controllers/creditCard/routes.js">
+          <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+        </file>
+        <file name="validations.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/controllers/creditCard/validations.js">
+          <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="26" count="6" type="stmt"/>
+          <line num="38" count="6" type="stmt"/>
+          <line num="45" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.libs">
+        <metrics statements="21" coveredstatements="9" conditionals="10" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <file name="constants.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/libs/constants.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+        </file>
+        <file name="utilities.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/libs/utilities.js">
+          <metrics statements="19" coveredstatements="7" conditionals="10" coveredconditionals="6" methods="3" coveredmethods="3"/>
+          <line num="2" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="6" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="8" count="4" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="13" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="14" count="3" type="stmt"/>
+          <line num="17" count="3" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.middlewares">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <file name="validationHandler.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/middlewares/validationHandler.js">
+          <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="6" type="stmt"/>
+          <line num="10" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="11" count="5" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.repositories.creditCard">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <file name="creditCardRepository.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/repositories/creditCard/creditCardRepository.js">
+          <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.repositories.database">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <file name="creditCardCollection.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/repositories/database/creditCardCollection.js">
+          <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+        </file>
+        <file name="index.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/src/repositories/database/index.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="test.controllers.creditCard">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="mockCreditcard.js" path="/Users/ayaliz01/Documents/_Projects/_ay/credit-cards-service/test/controllers/creditCard/mockCreditcard.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

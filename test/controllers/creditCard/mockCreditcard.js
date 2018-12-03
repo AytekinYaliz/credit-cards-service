@@ -5,6 +5,8 @@ const validCardNumber = 5253030001234567;
 const validLimit = 123.23;
 
 module.exports = {
+   validName,
+
    creditCardWithEmptyName: {
       name: ''
    },
