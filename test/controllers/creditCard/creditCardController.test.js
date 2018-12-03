@@ -2,7 +2,7 @@ const supertest = require('supertest');
 
 const { StatusCodes } = require('../../../src/libs/constants');
 const server = require('../../../src/server');
-
+const mockCreditCard = require('./mockCreditcard');
 
 beforeAll((done) => {
    jest.setTimeout(1000);
@@ -26,7 +26,7 @@ describe('CreditCard Controller', () => {
    it('should return 400 w/ empty name for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
-         .send({ name: '' })
+         .send(mockCreditCard.creditCardWithEmptyName)
          .end((err, res) => {
             expect(res.status).toBe(StatusCodes.BadRequest);
             expect(res.body.data[0].msg).toBe('Name is required!');
