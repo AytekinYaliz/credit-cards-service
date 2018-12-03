@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run nodemon",
     "nodemon": "nodemon src/index.js",
-    "test": "jest --forceExit",
+    "test": "cross-env NODE_ENV=test jest --forceExit",
     "test:w": "npm run test -- --watchAll"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.7",
     "supertest": "^3.3.0"
