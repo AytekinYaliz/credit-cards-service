@@ -107,7 +107,7 @@ describe('CreditCard Controller', () => {
    });
 
    describe('CHARGE', () => {
-      it('should return validation errors for PUT /api/creditCards/:name/', (done) => {
+      it('should return validation errors for PUT /api/creditCards/:name/charge', (done) => {
          supertest(server)
             .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
             .send(mockCreditCard.creditCardWithEmptyAmount)
@@ -118,13 +118,28 @@ describe('CreditCard Controller', () => {
             });
       });
 
-      it('should return validation errors for PUT /api/creditCards/:name/', (done) => {
+      it('should return validation errors for PUT /api/creditCards/:name/charge', (done) => {
          supertest(server)
             .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
             .send(mockCreditCard.creditCardWithInvalidAmount)
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.BadRequest);
-               expect(res.body.data[0].msg).toBe('Invalid amount!');
+               expect(res.body.data[0].msg).toBe('Amount is required!');
+               expect(res.body.data[1].msg).toBe('Invalid amount!');
+               done();
+            });
+      });
+
+      it('should return 200 w/ valid charge for PUT /api/creditCards/:name/charge', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
+            .send(mockCreditCard.creditCardWithInvalidCharge)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.OK);
+               expect(res.body.data.cardNumber).not.toBeNull();
+               expect(res.body.data.balance).not.toBeNull();
+               expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
+               expect(res.body.data.balance).toBe(validLimit - validCharge);
                done();
             });
       });

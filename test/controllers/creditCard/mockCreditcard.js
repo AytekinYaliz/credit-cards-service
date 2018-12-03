@@ -4,9 +4,13 @@ const wrongFormatCardNumber = 12345678912312234234;
 const validCardNumber = 5253030001234567;
 const validLimit = 123.23;
 const invalidAmount = '234';
+const validCharge = 10.21;
 
 module.exports = {
    validName,
+   validCardNumber,
+   validLimit,
+   validCharge,
 
    creditCardWithEmptyName: {
       name: ''
@@ -35,8 +39,8 @@ module.exports = {
 
    creditCardWithEmptyAmount: {
    },
-   creditCardWithInvalidAmount: {
+   creditCardWithInvalidCharge: {
       name: validName,
-      amount: invalidAmount
+      amount: validLimit - validCharge
    }
 };

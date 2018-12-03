@@ -10,7 +10,8 @@ module.exports.getAll = function() {
 };
 
 module.exports.create = function(creditCard) {
-   creditCard.balance = 0;
-
-   return creditCardCollection.create(creditCard);
+   return creditCardCollection.create({
+      ...creditCard,
+      balance: 0
+   });
 };
