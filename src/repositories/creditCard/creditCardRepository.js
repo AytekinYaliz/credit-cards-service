@@ -3,11 +3,14 @@ const { creditCardCollection } = require('../database');
 
 
 module.exports.getAll = function() {
-   return creditCardCollection.getAll();
+   return creditCardCollection.getAll().map(creditCard => ({
+      ...creditCard,
+      balance: currencyFormatter.format(creditCard.balance)
+   }));
 };
 
 module.exports.create = function(creditCard) {
-   creditCard.balance = currencyFormatter.format(0);
+   creditCard.balance = 0;
 
    return creditCardCollection.create(creditCard);
 };
