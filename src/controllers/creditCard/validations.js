@@ -1,3 +1,5 @@
+// const validator = require('validator');
+const { isValidCardNumber } = require('../../libs/utilities');
 
 const validations = {
    id: {
@@ -22,10 +24,10 @@ const validations = {
          options: { min: 1, max: 19 },
          errorMessage: 'Wrong format!'
       },
-      // custom: {
-      //   options: (phones: any[]) => Array.isArray(phones), // && phones.length > 0 && phones.every(x => isValidObjectId(x)),
-      //   errorMessage: "Phones should be a list of strings!"
-      // }
+      custom: {
+        options: (cardNumber) => isValidCardNumber(cardNumber),
+        errorMessage: "Invalid card number!"
+      }
    }
 };
 

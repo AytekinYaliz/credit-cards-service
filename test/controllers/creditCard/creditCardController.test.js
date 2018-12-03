@@ -46,7 +46,7 @@ describe('CreditCard Controller', () => {
          });
    });
 
-   it('should return 400 w/ in valid card number-1 for POST /api/creditCards', (done) => {
+   it('should return 400 w/ invalid card number-1 for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
          .send(mockCreditCard.creditCardWithInvalidNumber1)
@@ -58,13 +58,26 @@ describe('CreditCard Controller', () => {
          });
    });
 
-   it('should return 400 w/ in valid card number-2 for POST /api/creditCards', (done) => {
+   it('should return 400 w/ invalid card number-2 for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
          .send(mockCreditCard.creditCardWithInvalidNumber2)
          .end((err, res) => {
             expect(res.status).toBe(StatusCodes.BadRequest);
             expect(res.body.data[0].msg).toBe('Wrong format!');
+            done();
+         });
+   });
+
+   it('should return 400 w/ Luhn validation for POST /api/creditCards', (done) => {
+      supertest(server)
+         .post('/api/creditCards')
+         .send(mockCreditCard.creditCardWithValidNumber)
+         .end((err, res) => {
+            console.log( res.body.data );
+
+            expect(res.status).toBe(StatusCodes.BadRequest);
+            expect(res.body.data[0].msg).toBe('Invalid card number!');
             done();
          });
    });
