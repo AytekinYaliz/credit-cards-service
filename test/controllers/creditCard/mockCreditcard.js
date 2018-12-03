@@ -30,5 +30,8 @@ module.exports = {
       name: validName,
       cardNumber: validCardNumber,
       limit: validLimit
+   },
+
+   creditCardWithEmptyAmount: {
    }
 };

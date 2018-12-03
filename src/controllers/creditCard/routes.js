@@ -20,5 +20,12 @@ router
       creditCardController.create
    );
 
+router
+   .route('/:name/charge')
+   .put(
+      checkSchema(validations.charge),
+      validationHandler(),
+      creditCardController.charge
+   );
 
 module.exports = router;

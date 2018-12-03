@@ -1,9 +1,8 @@
 // const validator = require('validator');
-const { isValidCardNumber } = require("../../libs/utilities");
+const { isValidCardNumber, isValidAmount } = require("../../libs/utilities");
 
 const validations = {
    name: {
-      // in: ['body'],
       isLength: {
          options: { min: 1 },
          errorMessage: "Name is required!"
@@ -16,7 +15,7 @@ const validations = {
          errorMessage: "Wrong format!"
       },
       custom: {
-         options: (cardNumber, { req }) => isValidCardNumber(req.body.cardNumber),
+         options: (_, { req }) => isValidCardNumber(req.body.cardNumber),
          errorMessage: "Invalid card number!"
       }
    },
@@ -27,10 +26,21 @@ const validations = {
          errorMessage: "Wrong format!"
       },
       custom: {
-         options: (cardNumber, { req }) => {
+         options: (_, { req }) => {
             return /^\d+(\.\d{1,2})?$/.test(req.body.limit)
          },
          errorMessage: "Invalid limit!"
+      }
+   },
+   amount: {
+      in: ["body"],
+      isLength: {
+         options: { min: 1 },
+         errorMessage: "Amount is required!"
+      },
+      custom: {
+         options: (_, { req }) => isValidAmount(req.body.amount),
+         errorMessage: "Invalid amount!"
       }
    }
 };
@@ -44,5 +54,14 @@ module.exports = {
       },
       cardNumber: validations.cardNumber,
       limit: validations.limit
+   },
+
+   // PUTT /api/creditCards/:name/charge
+   charge: {
+      name: {
+         in: ["params"],
+         ...validations.name
+      },
+      amount: validations.amount
    }
 };

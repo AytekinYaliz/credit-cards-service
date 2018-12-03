@@ -36,3 +36,10 @@ module.exports.isValidCardNumber = function(cardNumber) {
 
    return nCheck % 10 == 0;
 };
+
+module.exports.isValidAmount = function(amount) {
+   if(isNullOrUndefined(amount)) return false;
+   if(amount.charAt(0) !== '£') return false;
+
+   amount = amount.substr(1);
+};
