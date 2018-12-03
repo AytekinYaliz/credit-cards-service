@@ -79,4 +79,14 @@ describe('CreditCard Controller', () => {
             done();
          });
    });
+
+   it('should return 200 w/ valid input for POST /api/creditCards', (done) => {
+      supertest(server)
+         .post('/api/creditCards')
+         .send(mockCreditCard.creditCardWithValidInput)
+         .end((err, res) => {
+            expect(res.status).toBe(StatusCodes.Created);
+            done();
+         });
+   });
 })
