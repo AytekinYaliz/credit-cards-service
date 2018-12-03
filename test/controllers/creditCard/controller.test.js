@@ -15,6 +15,8 @@ describe('CreditCard Controller', () => {
          .get('/api/creditCards')
          .end((err, res) => {
             expect(res.status).toBe(HttpStatus.OK);
+            expect(res.body.data).not.toBeNull();
+            expect(res.body.data).not.toBeUndefined();
             done();
          });
    })
