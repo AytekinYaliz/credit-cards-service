@@ -90,7 +90,7 @@ describe('CreditCard Controller', () => {
          });
    });
 
-   it('should return array of 1 Credit Cards for GET /api/creditCards', (done) => {
+   it('should return array of 1 Credit Cards w/ 0 balance for GET /api/creditCards', (done) => {
       supertest(server)
          .get('/api/creditCards')
          .end((err, res) => {
@@ -99,6 +99,7 @@ describe('CreditCard Controller', () => {
             expect(res.body.data).not.toBeUndefined();
             expect(Array.isArray(res.body.data)).toBe(true);
             expect(res.body.data.length).toBe(1);
+            expect(res.body.data[0].balance).toBe('£0');
             done();
          });
    });
