@@ -1,3 +1,4 @@
+const { StatusCodes } = require('../../libs/constants');
 const creditCardRepository = require('../../repositories/creditCard/creditCardRepository');
 
 
@@ -8,7 +9,9 @@ module.exports.getAll = function(req, res, next) {
 }
 
 module.exports.create = function(req, res, next) {
-   const creditCards = creditCardRepository.getAll();
+   const creditCard = req.body;
 
-   return res.json({ data: creditCards });
+   const creditCards = creditCardRepository.create(creditCard);
+
+   return res.send(StatusCodes.Created);
 }
