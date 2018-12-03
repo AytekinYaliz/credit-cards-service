@@ -23,7 +23,7 @@ describe('CreditCard Controller', () => {
          });
    });
 
-   it('should return 400 w/ empty name for of POST /api/creditCards', (done) => {
+   it('should return 400 w/ empty name for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
          .send({ name: '' })
