@@ -1,7 +1,7 @@
 const supertest = require('supertest');
 
-const { HttpStatus } = require('../../src/libs/constants');
-const server = require('../../src/server');
+const { HttpStatus } = require('../../../src/libs/constants');
+const server = require('../../../src/server');
 
 
 beforeAll((done) => {

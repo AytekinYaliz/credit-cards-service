@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const creditCardController = require("./CreditCardController");
+const creditCardController = require("./controller");
 const router = Router();
 
 router
