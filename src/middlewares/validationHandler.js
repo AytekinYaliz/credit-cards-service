@@ -8,6 +8,8 @@ module.exports = function validationHandler() {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
+         console.log( errors.array() );
+
          return res
             .status(StatusCodes.BadRequest)
             .json({ data: errors.array() });

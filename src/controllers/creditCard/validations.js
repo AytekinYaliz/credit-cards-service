@@ -19,7 +19,7 @@ const validations = {
       isInt: true,
       toInt: true,
       isLength: {
-         options: { max: 19 },
+         options: { min: 1, max: 19 },
          errorMessage: 'Wrong format!'
       },
       // custom: {
@@ -36,6 +36,7 @@ module.exports = {
       name: {
          in: ['body'],
          ...validations.name
-      }
+      },
+      cardNumber: validations.cardNumber
    }
 };

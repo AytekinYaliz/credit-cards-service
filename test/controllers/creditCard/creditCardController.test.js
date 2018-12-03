@@ -34,13 +34,14 @@ describe('CreditCard Controller', () => {
          });
    });
 
-   it('should return 400 w/ empty name for POST /api/creditCards', (done) => {
+   it('should return 400 w/ empty card number for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
          .send(mockCreditCard.creditCardWithEmptyNumber)
          .end((err, res) => {
             expect(res.status).toBe(StatusCodes.BadRequest);
-            expect(res.body.data[0].msg).toBe('Card number is required!');
+            expect(res.body.data[0].msg).toBe('Invalid value');
+            expect(res.body.data[1].msg).toBe('Wrong format!');
             done();
          });
    });
