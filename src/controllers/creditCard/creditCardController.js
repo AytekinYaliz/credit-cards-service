@@ -1,26 +1,30 @@
-const { StatusCodes } = require('../../libs/constants');
-const creditCardRepository = require('../../repositories/creditCard/creditCardRepository');
-
+const { StatusCodes } = require("../../libs/constants");
+const { convertAmountToNumber } = require('../../libs/utilities');
+const creditCardRepository = require("../../repositories/creditCard/creditCardRepository");
 
 module.exports.getAll = function(req, res, next) {
    const creditCards = creditCardRepository.getAll();
 
    return res.json({ data: creditCards });
-}
+};
 
 module.exports.create = function(req, res, next) {
-   const creditCard = req.body;
-
-   const creditCards = creditCardRepository.create(creditCard);
+   let creditCard = req.body;
+   creditCard = creditCardRepository.create(creditCard);
 
    return res.send(StatusCodes.Created);
-}
-
+};
 
 module.exports.charge = function(req, res, next) {
-   const creditCard = req.body;
+   let creditCard = req.body;
+   creditCard.amount = convertAmountToNumber(creditCard.amount);
 
-   // const creditCards = creditCardRepository.charge(creditCard);
+   creditCard = creditCardRepository.charge(creditCard);
 
-   // return res.send(StatusCodes.Created);
-}
+   return res.status(StatusCodes.OK).json({
+      data: {
+         cardNumber: creditCard.cardNumber,
+         balance: creditCard.balance
+      }
+   });
+};

@@ -133,15 +133,26 @@ describe('CreditCard Controller', () => {
       it('should return 200 w/ valid charge for PUT /api/creditCards/:name/charge', (done) => {
          supertest(server)
             .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
-            .send(mockCreditCard.creditCardWithInvalidCharge)
+            .send(mockCreditCard.creditCardWithValidCharge)
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.OK);
                expect(res.body.data.cardNumber).not.toBeNull();
                expect(res.body.data.balance).not.toBeNull();
                expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
-               expect(res.body.data.balance).toBe(validLimit - validCharge);
+               expect(res.body.data.balance).toBe(mockCreditCard.validLimit - mockCreditCard.validCharge);
                done();
             });
       });
+
+      // it('should return 400 w/ invalid name for PUT /api/creditCards/:name/charge', (done) => {
+      //    supertest(server)
+      //       .put(`/api/creditCards/${mockCreditCard.invalidName}/charge`)
+      //       .send(mockCreditCard.creditCardWithValidCharge)
+      //       .end((err, res) => {
+      //          expect(res.status).toBe(StatusCodes.BadRequest);
+      //          expect(res.body).toBe('Credit card not found!');
+      //          done();
+      //       });
+      // });
    });
 })

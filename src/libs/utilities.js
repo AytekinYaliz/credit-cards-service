@@ -1,3 +1,4 @@
+
 function isNullOrUndefined(value) {
    return value === null || value === undefined;
 }
@@ -6,6 +7,12 @@ function isNumericOnly(value) {
    if(isNullOrUndefined(value)) return false;
 
    return !/[^0-9]/.test(value);
+}
+
+module.exports.isSameCreditCard = function (name) {
+   return function isSameName(creditCard) {
+      return creditCard.name === name;
+   }
 }
 
 module.exports.isValidCardNumber = function(cardNumber) {
@@ -42,4 +49,11 @@ module.exports.isValidAmount = function(amount) {
    if(amount.charAt(0) !== '£') return false;
 
    amount = amount.substr(1);
+
+   return true;
+};
+
+module.exports.convertAmountToNumber = function(amount) {
+   amount = amount.substr(1);
+   return Number(amount);
 };

@@ -15,3 +15,16 @@ module.exports.create = function(creditCard) {
       balance: 0
    });
 };
+
+module.exports.charge = function({ name, amount }) {
+   const creditCard = creditCardCollection.getOne(name);
+
+   if(!creditCard) throw Error('Credit card not found!');
+
+   // if(creditCard.balance < creditCard.limit - amount) throw Error('Credit card not found!');
+
+   creditCard.balance += amount;
+   creditCardCollection.update(creditCard);
+
+   return creditCard;
+};
