@@ -144,15 +144,15 @@ describe('CreditCard Controller', () => {
             });
       });
 
-      // it('should return 400 w/ invalid name for PUT /api/creditCards/:name/charge', (done) => {
-      //    supertest(server)
-      //       .put(`/api/creditCards/${mockCreditCard.invalidName}/charge`)
-      //       .send(mockCreditCard.creditCardWithValidCharge)
-      //       .end((err, res) => {
-      //          expect(res.status).toBe(StatusCodes.BadRequest);
-      //          expect(res.body).toBe('Credit card not found!');
-      //          done();
-      //       });
-      // });
+      it('should return 400 w/ exceed limit for PUT /api/creditCards/:name/charge', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
+            .send(mockCreditCard.creditCardWithExceedLimit)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.BadRequest);
+               expect(res.body.error).toBe('Exceeds the limit!');
+               done();
+            });
+      });
    });
 })
