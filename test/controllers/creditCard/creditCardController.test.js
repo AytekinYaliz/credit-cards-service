@@ -74,8 +74,6 @@ describe('CreditCard Controller', () => {
          .post('/api/creditCards')
          .send(mockCreditCard.creditCardWithInvalidLimit)
          .end((err, res) => {
-            console.log( res.body.data );
-
             expect(res.status).toBe(StatusCodes.BadRequest);
             expect(res.body.data[0].msg).toBe('Invalid limit!');
             done();
