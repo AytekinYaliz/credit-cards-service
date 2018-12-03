@@ -3,6 +3,7 @@ const invalidCardNumber = 12345678912312;
 const wrongFormatCardNumber = 12345678912312234234;
 const validCardNumber = 5253030001234567;
 const validLimit = 123.23;
+const invalidAmount = '234';
 
 module.exports = {
    validName,
@@ -33,5 +34,9 @@ module.exports = {
    },
 
    creditCardWithEmptyAmount: {
+   },
+   creditCardWithInvalidAmount: {
+      name: validName,
+      amount: invalidAmount
    }
 };

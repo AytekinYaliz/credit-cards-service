@@ -113,9 +113,7 @@ describe('CreditCard Controller', () => {
             .send(mockCreditCard.creditCardWithEmptyAmount)
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.BadRequest);
-               // expect(res.body.data[0].msg).toBe('Name is required!');
                expect(res.body.data[0].msg).toBe('Amount is required!');
-
                done();
             });
       });
@@ -127,7 +125,6 @@ describe('CreditCard Controller', () => {
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.BadRequest);
                expect(res.body.data[0].msg).toBe('Invalid amount!');
-
                done();
             });
       });
