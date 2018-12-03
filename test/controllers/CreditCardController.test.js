@@ -1,5 +1,6 @@
 const supertest = require('supertest');
 
+const { HttpStatus } = require('../../src/libs/constants');
 const server = require('../../src/server');
 
 
@@ -13,7 +14,7 @@ describe('CreditCard Controller', () => {
       supertest(server)
          .get('/api/creditCards')
          .end((err, res) => {
-            expect(res.status).toBe(200);
+            expect(res.status).toBe(HttpStatus.OK);
             done();
          });
    })
