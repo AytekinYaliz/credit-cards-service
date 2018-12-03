@@ -40,28 +40,28 @@ describe('CreditCard Controller', () => {
          .send(mockCreditCard.creditCardWithEmptyNumber)
          .end((err, res) => {
             expect(res.status).toBe(StatusCodes.BadRequest);
-            expect(res.body.data[0].msg).toBe('Invalid value');
-            expect(res.body.data[1].msg).toBe('Wrong format!');
+            // expect(res.body.data[0].msg).toBe('Invalid card number!');
+            expect(res.body.data[0].msg).toBe('Wrong format!');
             done();
          });
    });
 
-   it('should return 400 w/ invalid card number-1 for POST /api/creditCards', (done) => {
+   it('should return 400 w/ invalid card number for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
-         .send(mockCreditCard.creditCardWithInvalidNumber1)
+         .send(mockCreditCard.creditCardWithInvalidNumber)
          .end((err, res) => {
             expect(res.status).toBe(StatusCodes.BadRequest);
-            expect(res.body.data[0].msg).toBe('Invalid value');
-            expect(res.body.data[1].msg).toBe('Wrong format!');
+            expect(res.body.data[0].msg).toBe('Invalid card number!');
+            // expect(res.body.data[1].msg).toBe('Wrong format!');
             done();
          });
    });
 
-   it('should return 400 w/ invalid card number-2 for POST /api/creditCards', (done) => {
+   it('should return 400 w/ wrong format number for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
-         .send(mockCreditCard.creditCardWithInvalidNumber2)
+         .send(mockCreditCard.creditCardWithWrongFormatNumber)
          .end((err, res) => {
             expect(res.status).toBe(StatusCodes.BadRequest);
             expect(res.body.data[0].msg).toBe('Wrong format!');
@@ -69,15 +69,15 @@ describe('CreditCard Controller', () => {
          });
    });
 
-   it('should return 400 w/ Luhn validation for POST /api/creditCards', (done) => {
+   it('should return 400 w/ wrong format limit for POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
-         .send(mockCreditCard.creditCardWithValidNumber)
+         .send(mockCreditCard.creditCardWithInvalidLimit)
          .end((err, res) => {
             console.log( res.body.data );
 
             expect(res.status).toBe(StatusCodes.BadRequest);
-            expect(res.body.data[0].msg).toBe('Invalid card number!');
+            expect(res.body.data[0].msg).toBe('Invalid limit!');
             done();
          });
    });

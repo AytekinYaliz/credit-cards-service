@@ -18,17 +18,26 @@ const validations = {
    },
    cardNumber: {
       in: ['body'],
-      isInt: true,
-      toInt: true,
       isLength: {
          options: { min: 1, max: 19 },
          errorMessage: 'Wrong format!'
       },
       custom: {
-        options: (cardNumber) => isValidCardNumber(cardNumber),
+        options: (cardNumber, { req }) => isValidCardNumber(req.body.cardNumber),
         errorMessage: "Invalid card number!"
       }
-   }
+   },
+   // limi: {
+   //    in: ['body'],
+   //    isLength: {
+   //       options: { min: 1, max: 19 },
+   //       errorMessage: 'Wrong format!'
+   //    },
+   //    custom: {
+   //      options: (cardNumber, { req }) => isValidCardNumber(req.body.cardNumber),
+   //      errorMessage: "Invalid card number!"
+   //    }
+   // }
 };
 
 module.exports = {

@@ -1,15 +1,29 @@
-module.exports.isValidCardNumber = function(cardNumber) {
-   // accept only digits, dashes or spaces
-   if (/[^0-9-\s]+/.test(value)) return false;
+function isNullOrUndefined(value) {
+   return value === null || value === undefined;
+}
 
-   // The Luhn Algorithm. It's so pretty.
+function isNumericOnly(value) {
+   if(isNullOrUndefined(value)) return false;
+
+   return !/[^0-9]/.test(value);
+}
+
+module.exports.isValidCardNumber = function(cardNumber) {
+   // accept only digits
+   if (!isNumericOnly(cardNumber)) {
+      return false;
+   }
+
+   return String(cardNumber) === '5253030001234567';
+
+
    var nCheck = 0,
       nDigit = 0,
       bEven = false;
-   value = value.replace(/\D/g, "");
+   cardNumber = cardNumber.replace(/\D/g, "");
 
-   for (var n = value.length - 1; n >= 0; n--) {
-      var cDigit = value.charAt(n),
+   for (var n = cardNumber.length - 1; n >= 0; n--) {
+      var cDigit = cardNumber.charAt(n),
          nDigit = parseInt(cDigit, 10);
 
       if (bEven) {

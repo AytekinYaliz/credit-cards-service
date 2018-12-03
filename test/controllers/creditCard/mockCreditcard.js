@@ -1,5 +1,7 @@
 const validName = 'valid-name';
-const validCardNumber = 44629111
+const invalidCardNumber = 12345678912312;
+const wrongFormatCardNumber = 12345678912312234234;
+const validCardNumber = 5253030001234567
 
 module.exports = {
    creditCardWithEmptyName: {
@@ -8,16 +10,17 @@ module.exports = {
    creditCardWithEmptyNumber: {
       name: validName
    },
-   creditCardWithInvalidNumber1: {
+   creditCardWithInvalidNumber: {
       name: validName,
       cardNumber: 'invalid'
    },
-   creditCardWithInvalidNumber2: {
+   creditCardWithWrongFormatNumber: {
       name: validName,
-      cardNumber: 123456789123123123123
+      cardNumber: wrongFormatCardNumber
    },
-   creditCardWithValidNumber: {
+   creditCardWithInvalidLimit: {
       name: validName,
-      cardNumber: validCardNumber
+      cardNumber: validCardNumber,
+      limit: 234.333
    }
 };
