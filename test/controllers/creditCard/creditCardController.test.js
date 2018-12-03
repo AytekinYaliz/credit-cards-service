@@ -1,6 +1,6 @@
 const supertest = require('supertest');
 
-const { HttpStatus } = require('../../../src/libs/constants');
+const { StatusCodes } = require('../../../src/libs/constants');
 const server = require('../../../src/server');
 
 
@@ -14,7 +14,7 @@ describe('CreditCard Controller', () => {
       supertest(server)
          .get('/api/creditCards')
          .end((err, res) => {
-            expect(res.status).toBe(HttpStatus.OK);
+            expect(res.status).toBe(StatusCodes.OK);
             expect(res.body.data).not.toBeNull();
             expect(res.body.data).not.toBeUndefined();
             expect(Array.isArray(res.body.data)).toBe(true);
@@ -26,8 +26,10 @@ describe('CreditCard Controller', () => {
    it('should return 400 w/ empty name for of POST /api/creditCards', (done) => {
       supertest(server)
          .post('/api/creditCards')
+         .send({ name: '' })
          .end((err, res) => {
-            expect(res.status).toBe(HttpStatus.BadRequest);
+            expect(res.status).toBe(StatusCodes.BadRequest);
+            expect(res.body.data[0].msg).toBe('Name is required!');
             done();
          });
    });

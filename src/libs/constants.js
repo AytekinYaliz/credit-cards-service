@@ -1,4 +1,4 @@
-exports.HttpStatus = {
+exports.StatusCodes = {
    OK: 200,
    Created: 201,
    BadRequest: 400,

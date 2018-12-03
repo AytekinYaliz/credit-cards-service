@@ -1,6 +1,6 @@
 const supertest = require('supertest');
 
-const { HttpStatus } = require('../src/libs/constants');
+const { StatusCodes } = require('../src/libs/constants');
 const server = require('../src/server');
 
 beforeAll(() => {
@@ -12,7 +12,7 @@ describe('Health check..', () => {
       supertest(server)
          .get('/api/health-check')
          .end((err, res) => {
-            expect(res.status).toBe(HttpStatus.OK);
+            expect(res.status).toBe(StatusCodes.OK);
             expect(res.text).toBe('OK');
             done();
          });
@@ -22,7 +22,7 @@ describe('Health check..', () => {
       supertest(server)
          .post('/api/health-check')
          .end((err, res) => {
-            expect(res.status).toBe(HttpStatus.NotFound);
+            expect(res.status).toBe(StatusCodes.NotFound);
             done();
          });
    })
