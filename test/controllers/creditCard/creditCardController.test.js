@@ -207,7 +207,7 @@ describe('CreditCard Controller', () => {
             });
       });
 
-      it('should return 200 w/ negative balance for PUT /api/creditCards/:name/charge', (done) => {
+      it('should return 200 w/ negative balance for PUT /api/creditCards/:name/credit', (done) => {
          supertest(server)
             .put(`/api/creditCards/${mockCreditCard.creditCardWithValidCredit.name}/credit`)
             .send(mockCreditCard.creditCardWithValidCredit)
@@ -218,6 +218,17 @@ describe('CreditCard Controller', () => {
                expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
                expect(res.body.data.remainingBalance).toBe(remainingBalance + mockCreditCard.validCredit);
                remainingBalance = res.body.data.remainingBalance;
+               done();
+            });
+      });
+
+      it('should return 400 w/ invalid name for PUT /api/creditCards/:name/credit', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.creditCardWithInvalidName.name}/credit`)
+            .send(mockCreditCard.creditCardWithInvalidName)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.BadRequest);
+               expect(res.body.error).toBe('Credit card not found!');
                done();
             });
       });
