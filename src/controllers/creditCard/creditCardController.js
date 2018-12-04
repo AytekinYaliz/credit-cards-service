@@ -30,15 +30,16 @@ module.exports.charge = function(req, res, next) {
 };
 
 module.exports.credit = function(req, res, next) {
-   // let creditCard = req.body;
-   // creditCard.amount = convertAmountToNumber(creditCard.amount);
+   let creditCard = req.body;
+   creditCard.amount = convertAmountToNumber(creditCard.amount);
 
-   // creditCard = creditCardRepository.charge(creditCard);
+   creditCard = creditCardRepository.credit(creditCard);
 
-   // return res.status(StatusCodes.OK).json({
-   //    data: {
-   //       cardNumber: creditCard.cardNumber,
-   //       remainingBalance: creditCard.limit - creditCard.balance
-   //    }
-   // });
+   return res.status(StatusCodes.OK)
+      .json({
+         data: {
+            cardNumber: creditCard.cardNumber,
+            remainingBalance: creditCard.limit - creditCard.balance
+         }
+      });
 };

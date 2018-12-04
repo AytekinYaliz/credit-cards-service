@@ -6,6 +6,7 @@ const validCardNumber = 5253030001234567;
 const validLimit = 123.23;
 const invalidAmount = '234';
 const validCharge = 10.23;
+const validCredit = 9.15;
 
 module.exports = {
    validName,
@@ -13,6 +14,7 @@ module.exports = {
    validCardNumber,
    validLimit,
    validCharge,
+   validCredit,
 
    creditCardWithEmptyName: {
       name: ''
@@ -56,5 +58,10 @@ module.exports = {
    creditCardWithInvalidName: {
       name: invalidName,
       amount: '£1'
+   },
+
+   creditCardWithValidCredit: {
+      name: validName,
+      amount: `£${validCredit}`
    }
 };

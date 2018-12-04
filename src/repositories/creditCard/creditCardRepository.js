@@ -1,6 +1,5 @@
-const { currencyFormatter } = require('../../libs/constants');
-const { creditCardCollection } = require('../database');
-
+const { currencyFormatter } = require("../../libs/constants");
+const { creditCardCollection } = require("../database");
 
 module.exports.getAll = function() {
    return creditCardCollection.getAll().map(creditCard => ({
@@ -19,13 +18,24 @@ module.exports.create = function(creditCard) {
 module.exports.charge = function({ name, amount }) {
    const creditCard = creditCardCollection.getOne(name);
 
-   if(!creditCard)
-      throw Error('Credit card not found!');
+   if (!creditCard) throw Error("Credit card not found!");
 
-   if(creditCard.limit < creditCard.balance + amount)
-      throw Error('Exceeds the limit!');
+   if (creditCard.limit < creditCard.balance + amount)
+      throw Error("Exceeds the limit!");
 
    creditCard.balance += amount;
+   creditCardCollection.update(creditCard);
+
+   return creditCard;
+};
+
+module.exports.credit = function({ name, amount }) {
+   const creditCard = creditCardCollection.getOne(name);
+
+   if (!creditCard)
+      throw Error("Credit card not found!");
+
+   creditCard.balance -= amount;
    creditCardCollection.update(creditCard);
 
    return creditCard;

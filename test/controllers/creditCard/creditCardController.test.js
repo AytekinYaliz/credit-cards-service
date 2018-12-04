@@ -133,7 +133,7 @@ describe('CreditCard Controller', () => {
 
       it('should return 200 w/ valid charge for PUT /api/creditCards/:name/charge', (done) => {
          supertest(server)
-            .put(`/api/creditCards/${mockCreditCard.validName}/charge`)
+            .put(`/api/creditCards/${mockCreditCard.creditCardWithValidCharge.name}/charge`)
             .send(mockCreditCard.creditCardWithValidCharge)
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.OK);
@@ -194,14 +194,14 @@ describe('CreditCard Controller', () => {
 
       it('should return 200 w/ valid credit for PUT /api/creditCards/:name/credit', (done) => {
          supertest(server)
-            .put(`/api/creditCards/${mockCreditCard.validName}/credit`)
-            .send(mockCreditCard.creditCardWithValidCharge)
+            .put(`/api/creditCards/${mockCreditCard.creditCardWithValidCredit.name}/credit`)
+            .send(mockCreditCard.creditCardWithValidCredit)
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.OK);
                expect(res.body.data.cardNumber).not.toBeNull();
                expect(res.body.data.balance).not.toBeNull();
                expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
-               expect(res.body.data.remainingBalance).toBe(remainingBalance - mockCreditCard.validCharge);
+               expect(res.body.data.remainingBalance).toBe(remainingBalance + mockCreditCard.validCredit);
                done();
             });
       });
