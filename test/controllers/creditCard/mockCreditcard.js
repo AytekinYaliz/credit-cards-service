@@ -48,5 +48,9 @@ module.exports = {
    creditCardWithExceedLimit: {
       name: validName,
       amount: `£${validLimit - validCharge + 1}`
+   },
+   creditCardWithInvalidName: {
+      name: invalidName,
+      amount: '£1'
    }
 };
