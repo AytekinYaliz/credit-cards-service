@@ -166,4 +166,17 @@ describe('CreditCard Controller', () => {
             });
       });
    });
+
+   describe('CREDIT', () => {
+      it('should return validation errors for PUT /api/creditCards/:name/credit', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.validName}/credit`)
+            .send(mockCreditCard.creditCardWithEmptyAmount)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.BadRequest);
+               expect(res.body.data[0].msg).toBe('Amount is required!');
+               done();
+            });
+      });
+   });
 })
