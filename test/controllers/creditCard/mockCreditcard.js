@@ -41,6 +41,10 @@ module.exports = {
 
    creditCardWithEmptyAmount: {
    },
+   creditCardWithInvalidAmount: {
+      name: validName,
+      amount: invalidAmount
+   },
    creditCardWithValidCharge: {
       name: validName,
       amount: `£${validCharge}`

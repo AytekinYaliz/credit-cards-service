@@ -10,6 +10,8 @@ beforeAll((done) => {
 });
 
 describe('CreditCard Controller', () => {
+   let remainingBalance = 0;
+
    describe('GET All & ADD', () => {
       it('should return array of Credit Cards for GET /api/creditCards', (done) => {
          supertest(server)
@@ -124,8 +126,7 @@ describe('CreditCard Controller', () => {
             .send(mockCreditCard.creditCardWithInvalidAmount)
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.BadRequest);
-               expect(res.body.data[0].msg).toBe('Amount is required!');
-               expect(res.body.data[1].msg).toBe('Invalid amount!');
+               expect(res.body.data[0].msg).toBe('Invalid amount!');
                done();
             });
       });
@@ -140,6 +141,7 @@ describe('CreditCard Controller', () => {
                expect(res.body.data.balance).not.toBeNull();
                expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
                expect(res.body.data.remainingBalance).toBe(mockCreditCard.validLimit - mockCreditCard.validCharge);
+               remainingBalance = res.body.data.remainingBalance;
                done();
             });
       });
@@ -175,6 +177,31 @@ describe('CreditCard Controller', () => {
             .end((err, res) => {
                expect(res.status).toBe(StatusCodes.BadRequest);
                expect(res.body.data[0].msg).toBe('Amount is required!');
+               done();
+            });
+      });
+
+      it('should return validation errors for PUT /api/creditCards/:name/credit', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.validName}/credit`)
+            .send(mockCreditCard.creditCardWithInvalidAmount)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.BadRequest);
+               expect(res.body.data[0].msg).toBe('Invalid amount!');
+               done();
+            });
+      });
+
+      it('should return 200 w/ valid credit for PUT /api/creditCards/:name/credit', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.validName}/credit`)
+            .send(mockCreditCard.creditCardWithValidCharge)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.OK);
+               expect(res.body.data.cardNumber).not.toBeNull();
+               expect(res.body.data.balance).not.toBeNull();
+               expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
+               expect(res.body.data.remainingBalance).toBe(remainingBalance - mockCreditCard.validCharge);
                done();
             });
       });
