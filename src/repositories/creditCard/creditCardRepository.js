@@ -22,8 +22,6 @@ module.exports.charge = function({ name, amount }) {
    if(!creditCard)
       throw Error('Credit card not found!');
 
-   console.log( creditCard.limit, creditCard.balance + amount );
-
    if(creditCard.limit < creditCard.balance + amount)
       throw Error('Exceeds the limit!');
 
