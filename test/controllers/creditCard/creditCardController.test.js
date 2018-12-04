@@ -202,6 +202,22 @@ describe('CreditCard Controller', () => {
                expect(res.body.data.balance).not.toBeNull();
                expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
                expect(res.body.data.remainingBalance).toBe(remainingBalance + mockCreditCard.validCredit);
+               remainingBalance = res.body.data.remainingBalance;
+               done();
+            });
+      });
+
+      it('should return 200 w/ negative balance for PUT /api/creditCards/:name/charge', (done) => {
+         supertest(server)
+            .put(`/api/creditCards/${mockCreditCard.creditCardWithValidCredit.name}/credit`)
+            .send(mockCreditCard.creditCardWithValidCredit)
+            .end((err, res) => {
+               expect(res.status).toBe(StatusCodes.OK);
+               expect(res.body.data.cardNumber).not.toBeNull();
+               expect(res.body.data.balance).not.toBeNull();
+               expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
+               expect(res.body.data.remainingBalance).toBe(remainingBalance + mockCreditCard.validCredit);
+               remainingBalance = res.body.data.remainingBalance;
                done();
             });
       });
