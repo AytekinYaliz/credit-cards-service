@@ -33,12 +33,12 @@ module.exports = {
    creditCardWithInvalidLimit: {
       name: validName,
       cardNumber: validCardNumber,
-      limit: 234.333
+      limit: '234.333'
    },
    creditCardWithValidInput: {
       name: validName,
       cardNumber: validCardNumber,
-      limit: validLimit
+      limit: `£${validLimit}`
    },
 
    creditCardWithEmptyAmount: {

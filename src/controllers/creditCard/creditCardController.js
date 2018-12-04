@@ -10,6 +10,7 @@ module.exports.getAll = function(req, res, next) {
 
 module.exports.create = function(req, res, next) {
    let creditCard = req.body;
+   creditCard.limit = convertAmountToNumber(creditCard.limit);
    creditCard = creditCardRepository.create(creditCard);
 
    return res.send(StatusCodes.Created);

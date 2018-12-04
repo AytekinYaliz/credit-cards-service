@@ -50,7 +50,7 @@ module.exports.isValidAmount = function(amount) {
 
    amount = amount.substr(1);
 
-   return true;
+   return /^\d+(\.\d{1,2})?$/.test(amount);
 };
 
 module.exports.convertAmountToNumber = function(amount) {
