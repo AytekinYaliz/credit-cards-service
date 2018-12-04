@@ -1,19 +1,21 @@
-const { isNumericOnly } = require('./utilities');
+const { isNumericOnly, isNullOrUndefined } = require("./utilities");
 
+module.exports = (function(arr) {
+   return function(ccNum) {
+      if (isNullOrUndefined(ccNum) || ccNum === '') return false;
+      if(typeof ccNum !== 'string') return false;
+      if (!isNumericOnly(ccNum)) return false;
 
-module.exports.isValidLuhnNumber  = (function (arr) {
-   return function (ccNum) {
-       var
-           len = ccNum.length,
-           bit = 1,
-           sum = 0,
-           val;
+      var len = ccNum.length,
+         bit = 1,
+         sum = 0,
+         val;
 
-       while (len) {
-           val = parseInt(ccNum.charAt(--len), 10);
-           sum += (bit ^= 1) ? arr[val] : val;
-       }
+      while (len) {
+         val = parseInt(ccNum.charAt(--len), 10);
+         sum += (bit ^= 1) ? arr[val] : val;
+      }
 
-       return sum && sum % 10 === 0;
+      return sum && sum % 10 === 0;
    };
-}([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]));
+})([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]);

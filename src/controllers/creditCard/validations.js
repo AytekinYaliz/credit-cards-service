@@ -1,5 +1,5 @@
 const { isValidAmount } = require("../../libs/utilities");
-const { isValidLuhnNumber } = require('../../libs/luhn');
+const isValidLuhnNumber = require('../../libs/luhn');
 
 
 const validations = {
@@ -27,7 +27,7 @@ const validations = {
          errorMessage: "Wrong format!"
       },
       custom: {
-         options: (_, { req }) => isValidAmount(req.body.limit), // /^\d+(\.\d{1,2})?$/.test(req.body.limit),
+         options: (_, { req }) => isValidAmount(req.body.limit),
          errorMessage: "Invalid limit!"
       }
    },

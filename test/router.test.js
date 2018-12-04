@@ -16,7 +16,7 @@ describe('Health check..', () => {
             expect(res.text).toBe('OK');
             done();
          });
-   })
+   });
 
    it('should return OK for POST /api/health-check', (done) => {
       supertest(server)
@@ -25,5 +25,5 @@ describe('Health check..', () => {
             expect(res.status).toBe(StatusCodes.NotFound);
             done();
          });
-   })
+   });
 })
