@@ -28,4 +28,12 @@ router
       creditCardController.charge
    );
 
+router
+   .route('/:name/credit')
+   .put(
+      checkSchema(validations.credit),
+      validationHandler(),
+      creditCardController.credit
+   );
+
 module.exports = router;

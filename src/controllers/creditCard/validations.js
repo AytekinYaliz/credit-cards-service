@@ -54,8 +54,17 @@ module.exports = {
       limit: validations.limit
    },
 
-   // PUTT /api/creditCards/:name/charge
+   // PUT /api/creditCards/:name/charge
    charge: {
+      name: {
+         in: ["params"],
+         ...validations.name
+      },
+      amount: validations.amount
+   },
+
+   // PUT /api/creditCards/:name/credit
+   credit: {
       name: {
          in: ["params"],
          ...validations.name
