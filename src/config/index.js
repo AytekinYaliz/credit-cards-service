@@ -9,5 +9,6 @@ if (process.env.NODE_ENV === 'test') {
 
 module.exports = {
    apiPrefix: process.env.apiPrefix,
+   nodeEnv: process.env.NODE_ENV,
    port: process.env.port
 }

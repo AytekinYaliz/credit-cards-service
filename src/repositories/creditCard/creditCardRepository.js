@@ -19,9 +19,13 @@ module.exports.create = function(creditCard) {
 module.exports.charge = function({ name, amount }) {
    const creditCard = creditCardCollection.getOne(name);
 
-   if(!creditCard) throw Error('Credit card not found!');
+   if(!creditCard)
+      throw Error('Credit card not found!');
 
-   // if(creditCard.balance < creditCard.limit - amount) throw Error('Credit card not found!');
+   console.log( creditCard.limit, creditCard.balance + amount );
+
+   if(creditCard.limit < creditCard.balance + amount)
+      throw Error('Exceeds the limit!');
 
    creditCard.balance += amount;
    creditCardCollection.update(creditCard);

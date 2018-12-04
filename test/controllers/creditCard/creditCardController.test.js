@@ -139,7 +139,7 @@ describe('CreditCard Controller', () => {
                expect(res.body.data.cardNumber).not.toBeNull();
                expect(res.body.data.balance).not.toBeNull();
                expect(res.body.data.cardNumber).toBe(mockCreditCard.validCardNumber);
-               expect(res.body.data.balance).toBe(mockCreditCard.validLimit - mockCreditCard.validCharge);
+               expect(res.body.data.remainingBalance).toBe(mockCreditCard.validLimit - mockCreditCard.validCharge);
                done();
             });
       });

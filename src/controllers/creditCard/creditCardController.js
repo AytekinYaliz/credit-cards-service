@@ -24,7 +24,7 @@ module.exports.charge = function(req, res, next) {
    return res.status(StatusCodes.OK).json({
       data: {
          cardNumber: creditCard.cardNumber,
-         balance: creditCard.balance
+         remainingBalance: creditCard.limit - creditCard.balance
       }
    });
 };

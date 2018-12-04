@@ -26,9 +26,7 @@ const validations = {
          errorMessage: "Wrong format!"
       },
       custom: {
-         options: (_, { req }) => {
-            return /^\d+(\.\d{1,2})?$/.test(req.body.limit)
-         },
+         options: (_, { req }) => /^\d+(\.\d{1,2})?$/.test(req.body.limit),
          errorMessage: "Invalid limit!"
       }
    },
