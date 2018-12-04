@@ -1,5 +1,6 @@
-// const validator = require('validator');
-const { isValidCardNumber, isValidAmount } = require("../../libs/utilities");
+const { isValidAmount } = require("../../libs/utilities");
+const { isValidLuhnNumber } = require('../../libs/luhn');
+
 
 const validations = {
    name: {
@@ -15,7 +16,7 @@ const validations = {
          errorMessage: "Wrong format!"
       },
       custom: {
-         options: (_, { req }) => isValidCardNumber(req.body.cardNumber),
+         options: (_, { req }) => isValidLuhnNumber(req.body.cardNumber),
          errorMessage: "Invalid card number!"
       }
    },
