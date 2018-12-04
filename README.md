@@ -10,12 +10,14 @@
  - npm run test:w
  - yarn test:w
   
+  
 **some further improvements:**
- - Data Access Layer (Repositories) will throw specific errors:  
+ - _Data Access Layer (Repositories)_ will throw specific errors:  
    class BaseError extends Error { ... }  
+   class DBError extends BaseError { ... }  
    class DuplicateKeyError extends DBError { ... }  
    class BadRequestError extends DBError { ... }
- - HTTP layer needs to return specific responses which will inherit from a base http response class:  
+ - _HTTP Layer_ needs to return specific responses which will inherit from a base http response class:  
    class HttpResponse { ... }  
    class BadRequestResponse extends HttpResponse { ... }  
    class NotFoundResponse extends HttpResponse { ... }  
